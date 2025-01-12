@@ -1,0 +1,199 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 97vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px 20px 0px 20px;
+    justify-content: center;
+  }
+  
+  main {
+    display: grid;
+    grid-template-columns: 170px 170px 170px; // Reduced by 15% from 200px
+    grid-gap: 8px;
+    // background: white;
+    padding: 0px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  app-square {
+    height: 170px; // Reduced by 15% from 200px
+    background: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+    
+    &:hover:not(.disabled) {
+      background: #f8f9fa;
+      border-color: #3498db;
+    }
+  
+    // Styling for X and O
+    &.x, &.o {
+        font-size: 8rem; // Adjusted for a better fit
+        font-weight: bold;
+        line-height: 1;
+        display: flex; // Ensure full alignment
+        align-items: center;
+        justify-content: center;
+      
+      &::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  
+    &.x {
+      color: #e74c3c;
+      background: rgba(231, 76, 60, 0.1);
+    }
+  
+    &.o {
+      color: #3498db;
+      background: rgba(52, 152, 219, 0.1);
+    }
+  
+    // Disabled state for when game is over
+    &.disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+  }
+  
+  // Game over overlay styles
+  .game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    z-index: 10;
+  }
+  
+  // Current player and winner display
+  h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  // Start new game button
+//   button {
+//     background: #3498db;
+//     color: white;
+//     border: none;
+//     padding: 12px 24px;
+//     font-size: 1.1rem;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     transition: all 0.3s ease;
+//     margin-top: 0px;
+//     margin-bottom: 20px;
+//     font-weight: bold;
+  
+//     &:hover {
+//       background: #2980b9;
+//       transform: translateY(-2px);
+//     }
+  
+//     &:active {
+//       transform: translateY(1px);
+//     }
+//   }
+// Start new game button with "Button 50" theme
+button {
+    appearance: button;
+    background-color: #000;
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 5px 10px 0;
+    overflow: visible;
+    padding: 12px 40px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    margin-top: 10px; // Adjusted to move the button up slightly
+  }
+  
+  // Focus state
+  button:focus {
+    text-decoration: none;
+  }
+  
+  // Hover state
+  button:hover {
+    text-decoration: none;
+  }
+  
+  // Active state
+  button:active {
+    box-shadow: rgba(0, 0, 0, 0.125) 0 3px 5px inset;
+    outline: 0;
+  }
+  
+  // Active state with transform
+  button:not([disabled]):active {
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+  }
+  
+  // Responsive design for larger screens
+  @media (min-width: 768px) {
+    button {
+      padding: 12px 50px;
+    }
+  }
+  
+  
+  // Responsive design
+  @media (max-width: 600px) {
+    main {
+      grid-template-columns: repeat(3, 120px);
+      grid-gap: 6px;
+    }
+  
+    app-square {
+      height: 120px;
+  
+      &.x, &.o {
+        font-size: 4rem;
+      }
+    }
+  }
